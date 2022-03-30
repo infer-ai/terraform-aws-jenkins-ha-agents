@@ -299,7 +299,7 @@ resource "aws_security_group" "agent_sg" {
     from_port   = 22
     to_port     = 22
     protocol    = "tcp"
-    cidr_blocks = [data.aws_vpc.vpc.cidr_blocks]
+    cidr_blocks = [data.aws_vpc.vpc.cidr_block]
     self        = false
   }
 
@@ -599,7 +599,7 @@ resource "aws_security_group" "master_sg" {
     from_port   = 22
     to_port     = 22
     protocol    = "tcp"
-    cidr_blocks = [data.aws_vpc.vpc.cidr_blocks]
+    cidr_blocks = [data.aws_vpc.vpc.cidr_block]
     self        = false
   }
 
