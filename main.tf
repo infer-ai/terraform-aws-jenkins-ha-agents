@@ -47,12 +47,6 @@ data "aws_vpc" "vpc" {
   }
 }
 
-data "aws_vpc" "cidr" {
-  tags = {
-    Name = var.vpc_cidr_block
-  }
-}
-
 data "aws_subnet_ids" "private" {
   vpc_id = data.aws_vpc.vpc.id
 
@@ -305,7 +299,7 @@ resource "aws_security_group" "agent_sg" {
     from_port   = 22
     to_port     = 22
     protocol    = "tcp"
-    cidr_blocks = [data.aws_vpc.cidr]
+    cidr_blocks = [data.aws_vpc.vpc.cidr_blocks]
     self        = false
   }
 
@@ -602,11 +596,11 @@ resource "aws_security_group" "master_sg" {
   }
 
   ingress {
-    from_port       = 22
-    to_port         = 22
-    protocol        = "tcp"
-    cidr_blocks     = [data.aws_vpc.cidr]
-    self            = false
+    from_port   = 22
+    to_port     = 22
+    protocol    = "tcp"
+    cidr_blocks = [data.aws_vpc.vpc.cidr_blocks]
+    self        = false
   }
 
   ingress {

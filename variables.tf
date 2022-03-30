@@ -218,8 +218,3 @@ variable "vpc_name" {
   description = "The name of the VPC the infrastructure will be deployed to."
   type        = string
 }
-
-variable "vpc_cidr_block" {
-  description = "The cidr of the VPC the infrastructure will be deployed to."
-  type        = string
-}
